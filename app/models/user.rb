@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-  has_many :tickets
-  has_many :listings
+  has_many :offers
+  has_many :commodities, through: :offers
 end

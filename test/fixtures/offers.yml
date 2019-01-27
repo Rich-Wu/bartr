@@ -2,14 +2,12 @@
 
 one:
   user_id: 1
-  item_name: MyString
+  commodity_id: 1
   quantity: 1
-  description: MyString
-  image: MyString
+  unit: MyString
 
 two:
   user_id: 1
-  item_name: MyString
+  commodity_id: 1
   quantity: 1
-  description: MyString
-  image: MyString
+  unit: MyString
