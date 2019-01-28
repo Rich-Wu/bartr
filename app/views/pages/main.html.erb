@@ -3,6 +3,8 @@
 <p>This is where the user lands when first using the site</p>
 <% if session[:id] %>
   <%= link_to "Update Account Information", account_path %>
+  <%= button_to "Logout", logout_path, method: 'post' %>
 <% else %>
   <%= link_to "Signup", signup_path %>
+  <%= link_to "Log In", login_path %>
 <% end %>
