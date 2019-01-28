@@ -1,2 +1,12 @@
 <h1>Offers#new</h1>
 <p>Find me in app/views/offers/new.html.erb</p>
+<%= form_for @offer, url: "/offer/new" do |offer_form| %>
+  <%= offer_form.hidden_field :user_id, value: session[:id] %>
+  Quantity: <%= offer_form.number_field :quantity %>
+  Units: <%= offer_form.text_field :unit, placeholder: "(e.g. boxes, units, copies)" %>
+  <%= fields_for @offer.commodity do |commodity_form| %>
+  Item: <%= commodity_form.text_field :name %>
+  Image: <%= commodity_form.file_field :image %>
+  <% end %>
+  <%= offer_form.submit "Create the Listing" %>
+<% end %>

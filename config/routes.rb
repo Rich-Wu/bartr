@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/account', to: 'users#update'
   patch '/account', to: 'users#newinfo'
   get '/offer/new', to: 'offers#new'
+  post '/offer/new', to: 'offers#create'
   get '/:username', to: 'users#read'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -7,7 +7,11 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
-    @commodity = Commodity.new(commodity_params)
+    @commodity = Commodity.new(name: params[:name], image: params[:image])
+    @commodity.save
+    @offer.commodity_id = @commodity.id
+    @offer.save
+    redirect_to main_path
   end
 
   def update
@@ -28,7 +32,4 @@ class OffersController < ApplicationController
     params.require(:offer).permit(:user_id, :commodity_id, :quantity, :unit)
   end
 
-  def commodity_params
-    params.require(:commodity).permit(:name, :image)
-  end
 end
