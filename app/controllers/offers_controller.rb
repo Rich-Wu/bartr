@@ -28,6 +28,7 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
     @offer.update(offer_params)
     @offer.status = 0
+    @offer.save
     redirect_to offer_path
   end
 

@@ -4,4 +4,8 @@
 <% if session[:id] %>
   <%= link_to "Offer Something of Yours to Trade", "/offer/new" %>
   <%= link_to "My Account", "/#{User.find(session[:id]).username}" %>
+  <% Offer.all.each do |offer| %>
+    <a href = "<%= "#{url_for offer_path(offer.id)}" %>"><h3><%= "#{offer.quantity} #{offer.unit} of #{offer.commodity.name}" %></h3></a>
+    <p>Posted By: <%= User.find(offer.user_id).username %></p>
+  <% end %>
 <% end %>

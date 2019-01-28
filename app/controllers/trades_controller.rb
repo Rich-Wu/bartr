@@ -7,6 +7,7 @@ class TradesController < ApplicationController
   def create
     @trade = Trade.new(trade_params)
     if @trade.valid?
+      @trade.status = 0
       @trade.save
       @trade.offer.status = 1
       @trade.offer.save
@@ -16,7 +17,7 @@ class TradesController < ApplicationController
 
   def accept
     @trade = Trade.find(params[:id])
-    @trade.status = 1
+    @trade.status = 2
     @trade.save
     @trade.offer.status = 2
     @trade.offer.save
