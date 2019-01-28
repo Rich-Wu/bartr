@@ -23,7 +23,11 @@ class UsersController < ApplicationController
   end
 
   def read
-    @user = User.find(params[:id])
+    if User.find_by(username: params[:username])
+      @user = User.find_by(username: params[:username])
+    else
+      redirect_to main_path
+    end
   end
 
   def index

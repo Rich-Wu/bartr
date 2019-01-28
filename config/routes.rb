@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/account', to: 'users#update'
   patch '/account', to: 'users#newinfo'
+  get '/:username', to: 'users#read'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
