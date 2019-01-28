@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <%= link_to "Home", main_path %>
     <% if session[:id] %>
       <%= link_to "Update Account Information", account_path %>
       <%= button_to "Logout", logout_path, method: 'post' %>

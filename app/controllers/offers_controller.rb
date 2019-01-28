@@ -18,6 +18,7 @@ class OffersController < ApplicationController
   end
 
   def read
+    @offer = Offer.find(params[:id])
   end
 
   private

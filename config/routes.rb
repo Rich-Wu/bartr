@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   patch '/account', to: 'users#newinfo'
   get '/offer/new', to: 'offers#new'
   post '/offer/new', to: 'offers#create'
+  get '/offer/:id', to: 'offers#read'
+  get '/offer/:id/trade', to: 'trades#new', as: 'new_trade'
   get '/:username', to: 'users#read'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

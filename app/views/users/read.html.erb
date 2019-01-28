@@ -4,3 +4,17 @@
 <p><%= @user.birthday %></p>
 <p><%= @user.address %></p>
 <p><%= @user.phone %></p>
+<% @user.offers.each do |offer| %>
+  <a href = "<%= "offers/#{offer.id}" %>">
+    <div>
+      <h4><%= "#{offer.quantity} " %>
+      <% if offer.unit != "" %>
+        <%= "#{offer.unit} of " %>
+      <% end %>
+      <%= "#{offer.commodity.name}" %></h4>
+      <% if offer.commodity.image != "" %>
+        <%= image_tag offer.commodity.image %>
+      <% end %>
+    </div>
+  </a>
+<% end %>

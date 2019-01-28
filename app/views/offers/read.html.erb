@@ -1,2 +1,13 @@
 <h1>Offers#read</h1>
 <p>Find me in app/views/offers/read.html.erb</p>
+<div id = "offer">
+  <h4><%= "#{@offer.quantity} " %>
+  <% if @offer.unit != "" %>
+    <%= "#{@offer.unit} of " %>
+  <% end %>
+  <%= "#{@offer.commodity.name}" %></h4>
+  <% if @offer.commodity.image != "" %>
+    <%= image_tag @offer.commodity.image %>
+  <% end %>
+  <%= link_to "Offer to Trade!", new_trade_path %>
+</div>
