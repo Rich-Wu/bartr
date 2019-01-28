@@ -9,5 +9,9 @@
   <% if @offer.commodity.image != "" %>
     <%= image_tag @offer.commodity.image %>
   <% end %>
-  <%= link_to "Offer to Trade!", new_trade_path %>
+  <% if owner? %>
+    <%= link_to "Edit this Listing", update_offer_path(params[:id]) %>
+  <% else %>
+    <%= link_to "Offer to Trade!", new_trade_path %>
+  <% end %>
 </div>

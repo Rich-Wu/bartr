@@ -8,10 +8,14 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/account', to: 'users#update'
   patch '/account', to: 'users#newinfo'
+  get '/offers', to: 'offers#index'
   get '/offer/new', to: 'offers#new'
   post '/offer/new', to: 'offers#create'
-  get '/offer/:id', to: 'offers#read'
+  get '/offer/:id', to: 'offers#read', as: 'offer'
+  get '/offer/:id/edit', to: 'offers#update', as: 'update_offer'
+  patch '/offer/:id/edit', to: 'offers#edit'
   get '/offer/:id/trade', to: 'trades#new', as: 'new_trade'
-  get '/:username', to: 'users#read'
+  post '/offer/:id/trade', to: 'trades#create'
+  get '/:username', to: 'users#read', as: 'user_path'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

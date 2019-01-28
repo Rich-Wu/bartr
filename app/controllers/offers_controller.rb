@@ -1,4 +1,5 @@
 class OffersController < ApplicationController
+  include OffersHelper
   before_action :verify_login
   def new
     @offer = Offer.new
@@ -15,6 +16,21 @@ class OffersController < ApplicationController
   end
 
   def update
+    if !owner?
+      redirect_to offers_path
+    else
+      @offer = Offer.find(params[:id])
+    end
+  end
+
+  def edit
+    @offer = Offer.find(params[:id])
+    @offer.update(offer_params)
+    redirect_to offer_path
+  end
+
+  def index
+    @offers = Offer.all.order(updated_at: :desc)
   end
 
   def read
