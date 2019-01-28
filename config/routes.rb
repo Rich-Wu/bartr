@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'offers/new'
+  get 'offers/update'
+  get 'offers/read'
   root 'pages#index'
   get '/main', to: 'pages#main'
   get '/login', to: 'sessions#new'
