@@ -1,3 +1,8 @@
 <h1>Pages#main</h1>
 <p>Find me in app/views/pages/main.html.erb</p>
 <p>This is where the user lands when first using the site</p>
+<% if session[:id] %>
+  <%= link_to "Update Account Information", account_path %>
+<% else %>
+  <%= link_to "Signup", signup_path %>
+<% end %>

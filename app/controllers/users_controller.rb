@@ -4,17 +4,26 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.valid?
-      @user.save
+    if params[:password] == params[:password_confirm]
+      @user = User.new(user_params)
+      if @user.save
+        session[:id] = @user.id
+      end
     end
-    redirect_to root_path
+    redirect_to main_path
   end
 
   def update
+    @user = User.find(session[:id])
+  end
+
+  def newinfo
+    @user = User.update(session[:id], user_params)
+    redirect_to account_path
   end
 
   def read
+    @user = User.find(params[:id])
   end
 
   def index
