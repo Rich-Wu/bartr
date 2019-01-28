@@ -11,6 +11,7 @@ class OffersController < ApplicationController
     @commodity = Commodity.new(name: params[:name], image: params[:image])
     @commodity.save
     @offer.commodity_id = @commodity.id
+    @offer.status = 0
     @offer.save
     redirect_to main_path
   end
@@ -26,6 +27,7 @@ class OffersController < ApplicationController
   def edit
     @offer = Offer.find(params[:id])
     @offer.update(offer_params)
+    @offer.status = 0
     redirect_to offer_path
   end
 

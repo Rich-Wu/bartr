@@ -17,6 +17,6 @@ Rails.application.routes.draw do
   patch '/offer/:id/edit', to: 'offers#edit'
   get '/offer/:id/trade', to: 'trades#new', as: 'new_trade'
   post '/offer/:id/trade', to: 'trades#create'
-  get '/:username', to: 'users#read', as: 'user_path'
+  get '/:username', to: 'users#read', as: 'user'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
