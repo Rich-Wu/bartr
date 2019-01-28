@@ -18,6 +18,7 @@ class TradesController < ApplicationController
   end
 
   def index
+    @trades = Trade.where(user_id: session[:id])
   end
 
   private

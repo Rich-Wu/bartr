@@ -1,5 +1,7 @@
 <h1>Pages#main</h1>
 <p>Find me in app/views/pages/main.html.erb</p>
 <p>This is where the user lands when first using the site</p>
-<%= link_to "Offer Something of Yours to Trade", "/offer/new" %>
-<%= link_to "My Account", "/#{User.find(session[:id]).username}" %>
+<% if session[:id] %>
+  <%= link_to "Offer Something of Yours to Trade", "/offer/new" %>
+  <%= link_to "My Account", "/#{User.find(session[:id]).username}" %>
+<% end %>
