@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'offers/new'
-  get 'offers/update'
-  get 'offers/read'
   root 'pages#index'
   get '/main', to: 'pages#main'
   get '/login', to: 'sessions#new'
@@ -11,7 +8,7 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/account', to: 'users#update'
   patch '/account', to: 'users#newinfo'
-  get '/offer/new', to: 'offer#new'
+  get '/offer/new', to: 'offers#new'
   get '/:username', to: 'users#read'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
