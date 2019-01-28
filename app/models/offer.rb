@@ -1,5 +1,5 @@
 class Offer < ApplicationRecord
   belongs_to :user
-  belongs_to :commodity
-  has_many :trades
+  belongs_to :commodity, dependent: :destroy
+  has_many :trades, dependent: :destroy
 end

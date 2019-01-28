@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'commodity/new'
+  get 'commodity/update'
   root 'pages#index'
   get '/main', to: 'pages#main'
   get '/signup', to: 'users#new', as: :signup
