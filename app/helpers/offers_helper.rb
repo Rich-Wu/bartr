@@ -3,7 +3,7 @@ module OffersHelper
     Offer.find(params[:id]).user_id == session[:id] ? true : false
   end
 
-  def currentStatus(offerId)
+  def offerStatus(offerId)
     status = Offer.find(offerId).status
     if status == 0
       return "No Trades"

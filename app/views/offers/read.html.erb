@@ -11,11 +11,17 @@
   <% end %>
   <% if owner? %>
     <%= link_to "Edit this Listing", update_offer_path(params[:id]) %>
-    <% @offer.trades.each do |trade| %>
+    <p><%= offerStatus(@offer.id) %></p>
+    <% @offer.trades.each do |trade| next if trade.status == 2 %>
       <div>
         <h4><%= "#{trade.quantity} #{trade.unit} of #{trade.name}" %></h4>
         <p>Proposed by: <a href = "/<%= User.find(trade.user_id).username %>"><%= User.find(trade.user_id).username %></a></p>
       </div>
+      <% if trade.status == 0 %>
+        <%= button_to "Accept", accept_path(trade.id) %>
+        <%= button_to "Decline", decline_path(trade.id) %>
+        <%= button_to "Counter", counter_path(trade.id) %>
+      <% end %>
     <% end %>
   <% else %>
     <%= link_to "Offer to Trade!", new_trade_path %>

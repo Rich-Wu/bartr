@@ -1,4 +1,5 @@
 class TradesController < ApplicationController
+  include TradesHelper
   def new
     @trade = Trade.new
   end
@@ -7,8 +8,30 @@ class TradesController < ApplicationController
     @trade = Trade.new(trade_params)
     if @trade.valid?
       @trade.save
+      @trade.offer.status = 1
+      @trade.offer.save
     end
     redirect_to offer_path(@trade.offer_id)
+  end
+
+  def accept
+    @trade = Trade.find(params[:id])
+    @trade.status = 1
+    @trade.save
+    @trade.offer.status = 2
+    @trade.offer.save
+    redirect_to offer_path(@trade.offer.id)
+  end
+
+  def decline
+    @trade = Trade.find(params[:id])
+    @trade.status = 2
+    @trade.save
+    if @trade.offer.trades.empty?
+      @trade.offer.status = 0
+      @trade.offer.save
+    end
+    redirect_to offer_path(@trade.offer.id)
   end
 
   def update
@@ -24,6 +47,6 @@ class TradesController < ApplicationController
   private
 
   def trade_params
-    params.require(:trade).permit(:user_id, :offer_id, :quantity, :unit, :name, :image)
+    params.require(:trade).permit(:user_id, :offer_id, :quantity, :unit, :name, :image, :status)
   end
 end

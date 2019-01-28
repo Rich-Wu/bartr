@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#delete'
   get '/signup', to: 'users#new', as: :signup
   post '/signup', to: 'users#create'
+  post '/trade/:id/accept', to: 'trades#accept', as: 'accept'
+  post '/trade/:id/decline', to: 'trades#decline', as: 'decline'
+  post '/trade/:id/counter', to: 'trades#counter', as: 'counter'
   get '/trades', to: 'trades#index'
   get '/account', to: 'users#update'
   patch '/account', to: 'users#newinfo'
