@@ -1,4 +1,9 @@
 class Api::OffersController < Api::BaseController
+  def latest
+    offers = Offer.all.order(updated_at: :desc)
+    respond_with offers
+  end
+
   def create
     offer = Offer.new(offer_params)
     commodity = Commodity.new(name: params[:name])

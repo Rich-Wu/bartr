@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  root 'pages#react'
   namespace :api, defaults: {format: :json} do
+    get '/offers', to: 'offers#latest'
     get '/user', to: 'users#self', as: 'info'
     get '/user/:username', to: 'users#show', as: 'show_user'
     get '/offer/:id', to: 'offers#show', as: 'show_offer'
@@ -7,7 +9,6 @@ Rails.application.routes.draw do
     delete '/offer/:id', to: 'offers#destroy', as: 'destroy_offer'
     patch '/offer/:id', to: 'offers#update', as: 'update_offer'
   end
-  root 'pages#index'
   get '/main', to: 'pages#main'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

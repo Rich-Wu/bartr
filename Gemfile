@@ -37,6 +37,9 @@ gem 'mini_magick', '~> 4.8'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# jQuery
+gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
+
 # React-Rails to create dynamic js content
 gem 'react-rails', '~> 2.4', '>= 2.4.7'
 
