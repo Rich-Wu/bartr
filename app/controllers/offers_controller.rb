@@ -29,6 +29,8 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
     @offer.update(offer_params)
     @offer.status = 0
+    @offer.commodity.image.attach(params[:commodity][:image])
+    @offer.commodity.save
     @offer.save
     @offer.trades.each do |trade|
       trade.status = 1
@@ -54,7 +56,7 @@ class OffersController < ApplicationController
   end
 
   def offer_params
-    params.require(:offer).permit(:user_id, :commodity_id, :quantity, :unit, :status)
+    params.require(:offer).permit(:user_id, :commodity_id, :quantity, :unit, :status, :image)
   end
 
 end

@@ -6,7 +6,7 @@
     <%= "#{@offer.unit} of " %>
   <% end %>
   <%= "#{@offer.commodity.name}" %></h4>
-  <% if @offer.commodity.image != "" %>
+  <% if @offer.commodity.image.attached? %>
     <%= image_tag @offer.commodity.image %>
   <% end %>
   <% if owner? %>
