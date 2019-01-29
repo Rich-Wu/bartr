@@ -40,6 +40,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # React-Rails to create dynamic js content
 gem 'react-rails', '~> 2.4', '>= 2.4.7'
 
+# Responders creates a set of rails functions dealing with http requests
+gem 'responders'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
