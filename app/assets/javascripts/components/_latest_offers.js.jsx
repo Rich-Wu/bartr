@@ -3,19 +3,24 @@ var LatestOffers = createReactClass({
     return {offers: []}
   },
   componentDidMount() {
-    $.getJSON('/api/offers', (response) => { this.setState({offers: response}) });
-    console.log(this.state);
+    $.getJSON('/api/commodities', (response) => {
+      this.setState({commodities: response});
+    })
+    $.getJSON('/api/offers', (response) => {
+      this.setState({offers: response});
+    });
   },
   render() {
     var offers = this.state.offers.map((offer) => {
+      var item = this.state.commodities.filter(commodity => commodity.id === offer.commodity_id);
       return(
-        <div key={offer.id}>
-          <h3>{offer.quantity}</h3>
+        <div key={offer.id} className="offerCard" id={'offer-'+offer.id}>
+          <h3>{offer.quantity} {offer.unit} of {item[0].name}</h3>
         </div>
       )
     })
     return(
-      <div>
+      <div className = "offers">
         {offers}
       </div>
     )

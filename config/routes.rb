@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get '/user', to: 'users#self', as: 'info'
     get '/user/:username', to: 'users#show', as: 'show_user'
     get '/offer/:id', to: 'offers#show', as: 'show_offer'
+    get '/commodities', to: 'commodities#all', as: 'all_commodities'
     post '/offer/new', to: 'offers#create', as: 'create_offer'
     delete '/offer/:id', to: 'offers#destroy', as: 'destroy_offer'
     patch '/offer/:id', to: 'offers#update', as: 'update_offer'
