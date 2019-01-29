@@ -8,7 +8,8 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
-    @commodity = Commodity.new(name: params[:name], image: params[:image])
+    @commodity = Commodity.new(name: params[:name])
+    @commodity.image.attach(params[:image])
     @commodity.save
     @offer.commodity_id = @commodity.id
     @offer.status = 0
