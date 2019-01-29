@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :api, defaults: {format: :json} do
+    get '/user', to: 'users#self', as: 'info'
+    get '/user/:username', to: 'users#show', as: 'show_user'
+    get '/offer/:id', to: 'offers#show', as: 'show_offer'
+    post '/offer/new', to: 'offers#create', as: 'create_offer'
+    delete '/offer/:id', to: 'offers#destroy', as: 'destroy_offer'
+    patch '/offer/:id', to: 'offers#update', as: 'update_offer'
+  end
   root 'pages#index'
   get '/main', to: 'pages#main'
   get '/login', to: 'sessions#new'
