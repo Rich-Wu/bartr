@@ -11,6 +11,6 @@
     <%= trade.offer.quantity %>
     <%= trade.offer.unit %>
     <%= trade.offer.commodity.name %>
-    <p>Status: Pending</p>
+    <p>Status: <%= tradeStatus(trade.id) %></p>
   <% end %>
 </div>

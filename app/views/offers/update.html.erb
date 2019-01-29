@@ -3,9 +3,7 @@
 <%= form_for @offer, url: update_offer_url(@offer.id) do |f| %>
   Quantity: <%= f.number_field :quantity, value: @offer.quantity %>
   Unit: <%= f.text_field :unit, value: @offer.unit %>
-    <%= fields_for @offer.commodity do |cf| %>
-    Item: <%= cf.text_field :name, value: @offer.commodity.name %>
-    Image: <%= f.file_field :image, value: @offer.commodity.image %>
-    <% end %>
+  Item: <%= @offer.commodity.name %>
+  <%= image_tag @offer.commodity.image %>
   <%= f.submit "Edit this Offering" %>
 <% end %>

@@ -17,6 +17,10 @@ class TradesController < ApplicationController
 
   def accept
     @trade = Trade.find(params[:id])
+    Trade.all.each do |trade|
+      trade.status = 1
+      trade.save
+    end
     @trade.status = 2
     @trade.save
     @trade.offer.status = 2
@@ -26,12 +30,19 @@ class TradesController < ApplicationController
 
   def decline
     @trade = Trade.find(params[:id])
-    @trade.status = 2
+    @trade.status = 1
     @trade.save
     if @trade.offer.trades.empty?
       @trade.offer.status = 0
       @trade.offer.save
     end
+    redirect_to offer_path(@trade.offer.id)
+  end
+
+  def complete
+    @trade = Trade.find(params[:id])
+    @trade.status = 3
+    @trade.save
     redirect_to offer_path(@trade.offer.id)
   end
 

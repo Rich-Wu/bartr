@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/trade/:id/accept', to: 'trades#accept', as: 'accept'
   post '/trade/:id/decline', to: 'trades#decline', as: 'decline'
   post '/trade/:id/counter', to: 'trades#counter', as: 'counter'
+  post '/trade/:id/complete', to: 'trades#complete', as: 'complete'
   get '/trades', to: 'trades#index'
   get '/account', to: 'users#update'
   patch '/account', to: 'users#newinfo'

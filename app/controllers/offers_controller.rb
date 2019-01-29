@@ -29,6 +29,10 @@ class OffersController < ApplicationController
     @offer.update(offer_params)
     @offer.status = 0
     @offer.save
+    @offer.trades.each do |trade|
+      trade.status = 1
+      trade.save
+    end
     redirect_to offer_path
   end
 
