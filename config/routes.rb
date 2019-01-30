@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#react'
+  root 'pages#index'
   namespace :api, defaults: {format: :json} do
     get '/offers', to: 'offers#latest'
     get '/user', to: 'users#self', as: 'info'
