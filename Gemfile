@@ -47,7 +47,7 @@ gem 'react-rails', '~> 2.4', '>= 2.4.7'
 gem 'responders'
 
 group :production do
-  gem 'aws-sdk', '~> 2'
+  gem 'aws-sdk-s3'
   gem 'pg'
 end
 
