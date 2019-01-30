@@ -12,13 +12,19 @@ nav {
 }
 
 .button {
-  margin: 0 .1rem;
+  margin: 0 .3rem;
   font: bold 1.8rem "Raleway";
   text-decoration: none;
   padding: .6rem 1rem;
   background-color: #296ddb;
   color: #d3dded;
   border-radius: 2px;
+  transition: color .2s, background-color .2s;
+}
+
+.button:hover {
+  color: #296ddb;
+  background-color: #d3dded;
 }
 
 nav a:last-child {
