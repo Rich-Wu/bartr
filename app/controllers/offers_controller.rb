@@ -29,8 +29,10 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
     @offer.update(offer_params)
     @offer.status = 0
-    @offer.commodity.image.attach(params[:commodity][:image])
-    @offer.commodity.save
+    if params[:commodity]
+      @offer.commodity.image.attach(params[:commodity][:image])
+      @offer.commodity.save
+    end
     @offer.save
     @offer.trades.each do |trade|
       trade.status = 1

@@ -6,6 +6,7 @@ class TradesController < ApplicationController
 
   def create
     @trade = Trade.new(trade_params)
+    # @trade.image.attach(params[:image])
     if @trade.valid?
       @trade.status = 0
       @trade.save
