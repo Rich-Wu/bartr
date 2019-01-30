@@ -46,6 +46,11 @@ gem 'react-rails', '~> 2.4', '>= 2.4.7'
 # Responders creates a set of rails functions dealing with http requests
 gem 'responders'
 
+group :production do
+  gem 'aws-sdk', '~> 2'
+  gem 'pg'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
