@@ -1,3 +1,26 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+nav {
+  color: #d3dded;
+  background-color: #5184d6;
+  display: flex;
+  padding: 10px 1%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  margin: 0 .1rem;
+  font-family: 1rem "Raleway";
+  text-decoration: none;
+  padding: .6rem 1rem;
+  background-color: #296ddb;
+  color: #d3dded;
+  border-radius: 2px;
+}
+
+nav a:last-child {
+  margin-right: 0;
+}
