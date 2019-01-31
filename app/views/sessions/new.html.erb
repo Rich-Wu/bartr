@@ -1,7 +1,10 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
-<%= form_tag url: '/login' do %>
-  Email: <%= text_field_tag :email %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Log In" %>
-<% end %>
+<div class="container">
+  <div class="signupForm">
+    <h2 class="formHeader">Log In</h2>
+    <%= form_tag '/login', class: 'form' do %>
+      <%= text_field_tag :email, nil, placeholder: "Email" %>
+      <%= password_field_tag :password, nil, placeholder: "Password" %>
+      <%= submit_tag "Log In" %>
+    <% end %>
+  </div>
+</div>
