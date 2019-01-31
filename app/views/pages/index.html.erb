@@ -1,4 +1,18 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
-<p>This is where the user will land upon visiting the site</p>
-<%= link_to "Enter the site", main_path %>
+<div id = 'salesContent'>
+  <div class = "tradeCard">
+    <div>
+      <h1 class="centerText animated slideInLeft">Welcome to Bartr</h1><h2 class="animated fadeIn delay-1s">where cashless is king</h2>
+    </div>
+    <%= image_tag('watch.png', {style: "height: 200px;", class: "animated fadeIn delay-2s" }) %>
+  </div>
+  <div class = "animated bounce2 infinite 5s" style = "display: flex; justify-content: center; align-content: center;background-image: url('<%= image_url('arrow.png') %>');background-position: 50% 50%;background-repeat: no-repeat;background-size: 10%;width: 100%;margin: 0; padding: 0;">
+  </div>
+  <div class = "tradeCard">
+    <%= image_tag('bicycle.png', {style: "height: 200px;", class: "animated fadeIn delay-2s"}) %>
+    <div class='textCard'>
+    <p class="centerText bigger">Bartr is your marketplace to trade goods and services for other goods</br> and services; no cash involved.</br></br>Browse goods. Make offers. Meet up. Get more than you paid for </br>and make acquiring things fun again.</p>
+    <div class='flex flexCenter'>
+      <%= link_to "Enter the site", main_path, class: 'button' %>
+    </div>
+  </div>
+</div>
