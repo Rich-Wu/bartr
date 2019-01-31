@@ -1,6 +1,7 @@
 class TradesController < ApplicationController
   include TradesHelper
   def new
+    @offer = Offer.find(params[:id])
     @trade = Trade.new
   end
 
@@ -59,6 +60,6 @@ class TradesController < ApplicationController
   private
 
   def trade_params
-    params.require(:trade).permit(:user_id, :offer_id, :quantity, :unit, :name, :image, :status)
+    params.require(:trade).permit(:user_id, :offer_id, :quantity, :unit, :name, :image, :status, :description)
   end
 end

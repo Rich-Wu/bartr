@@ -1,11 +1,27 @@
-<h1>Trades#new</h1>
-<p>Find me in app/views/trades/new.html.erb</p>
-<%= form_for @trade, url: "/offer/#{params[:id]}/trade" do |trade_form| %>
-  <%= trade_form.hidden_field :user_id, value: session[:id] %>
-  <%= trade_form.hidden_field :offer_id, value: params[:id] %>
-  Quantity: <%= trade_form.number_field :quantity %>
-  Units: <%= trade_form.text_field :unit, placeholder: "(e.g. boxes, units, copies)" %>
-  Item: <%= trade_form.text_field :name %>
-  Image: <%= trade_form.file_field :image %>
-  <%= trade_form.submit "Propose this trade!" %>
-<% end %>
+<div class="container">
+  <div class = "offerCard">
+    <a href = "<%= "#{url_for new_trade_path(@offer.id)}" %>">
+      <h3 class='formHeaderSmall'>
+        <%= "#{@offer.quantity} #{@offer.unit} of #{@offer.commodity.name}" %>
+      </h3>
+    </a>
+    <div class="offerImage" style = "background-image: url('<%= image_url(url_for(@offer.commodity.image)) %>');"></div>
+    <div class = "flex columnFlex black">
+      <p class = "centerText padding"><%= @offer.description %></p>
+      <p class = "rightText padding"><%= "by #{User.find(@offer.user_id).username} on #{@offer.updated_at.localtime.strftime('%m/%e/%y at %I:%M %P')}" %>
+      </div>
+    </div>
+    <div class='formBody'>
+      <h2 class = "formHeader tradeHeader">Propose a Trade!</h2>
+    <%= form_for @trade, url: "/offer/#{params[:id]}/trade", html: {multipart: true, class: 'form'} do |trade_form| %>
+      <%= trade_form.hidden_field :user_id, value: session[:id] %>
+      <%= trade_form.hidden_field :offer_id, value: params[:id] %>
+      <%= trade_form.number_field :quantity, placeholder: "Quantity" %>
+      <%= trade_form.text_field :unit, placeholder: "Units (Leave Blank if Item is a Unit)" %>
+      <%= trade_form.text_field :name, placeholder: "Name of Item/Service" %>
+      <%= trade_form.file_field :image %>
+      <%= trade_form.text_area :description, {placeholder: "Describe your proposal here", size: "20x10"} %>
+    <%= trade_form.submit "Propose this trade!" %>
+    <% end %>
+    </div>
+  </div>

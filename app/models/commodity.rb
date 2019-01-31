@@ -9,7 +9,7 @@ class Commodity < ApplicationRecord
 
   def add_default_image
     unless image.attached?
-      self.image.attach(io: File.open(Rails.root.join("app", "assets", "images", "default.jpeg")), filename: 'default.jpg' , content_type: "image/jpg")
+      self.image.attach(io: File.open(Rails.root.join("app", "assets", "images", "default.jpg")), filename: 'default.jpg' , content_type: "image/jpg")
     end
   end
 end

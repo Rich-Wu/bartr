@@ -1,11 +1,10 @@
 <% if session[:id] %>
   <%= link_to "Offer Something of Yours to Trade", "/offer/new" %>
-  <%= link_to "My Account", "/#{User.find(session[:id]).username}" %>
   <h2 class = "centerText">See What's Being Offered:</h2>
   <div class = "container">
   <% Offer.all.reverse.each do |offer| %>
       <div class = "offerCard">
-        <a href = "<%= "#{url_for offer_path(offer.id)}" %>">
+        <a href = "<%= "#{url_for new_trade_path(offer.id)}" %>">
           <h3 class='formHeaderSmall'>
             <%= "#{offer.quantity} #{offer.unit} of #{offer.commodity.name}" %>
           </h3>
@@ -16,6 +15,20 @@
           <p class = "rightText padding"><%= "by #{User.find(offer.user_id).username} on #{offer.updated_at.localtime.strftime('%m/%e/%y at %I:%M %P')}" %>
         </div>
       </div>
+      <% if offer.trades %>
+        <% offer.trades.each do |trade| next if trade.user_id != session[:id] %>
+        <div class = "tradeCard">
+          <h3 class='formHeaderSmall tradeHeader'>
+            <%= "You Proposed: #{trade.quantity} #{trade.unit} of #{trade.name}" %>
+          </h3>
+          <div class = "flex columnFlex black">
+            <p class = "centerText padding"><%= trade.description %></p>
+            <p class = "leftText padding"><%= "Latest Status: #{tradeStatus(trade.id)} since #{trade.updated_at.localtime.strftime('%m/%e/%y at %I:%M %P')}" %>
+          </div>
+          <div class="offerImage" style = "background-image: url('<%= image_url(url_for(trade.image)) %>');"></div>
+        </div>
+        <% end %>
+      <% end %>
   <% end %>
   </div>
 <% end %>
