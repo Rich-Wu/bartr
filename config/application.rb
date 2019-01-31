@@ -1,5 +1,5 @@
 require_relative 'boot'
-
+require ''
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -17,8 +17,4 @@ module Bartr
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
   end
-end
-
-Raven.configure do |config|
-  config.dsn = ENV['SENTRY_DSN']
 end
