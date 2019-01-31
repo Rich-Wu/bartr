@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :phonenum, only: [:create, :newinfo]
+
   def new
     @user = User.new
   end
@@ -31,6 +33,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def phonenum
+    params[:user][:phone].gsub!(/[^\d]/, '')
+  end
 
   def user_params
     params.require(:user).permit(:email, :username, :password, :birthday, :address, :phone)

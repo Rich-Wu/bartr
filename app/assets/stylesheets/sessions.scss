@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.formHeader {
+  background-color: #5184d6;
+  text-align: center;
+  font-size: 2.5em;
+  padding: 3% 3%;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  font-family: 'Raleway';
+  letter-spacing: 2px;
+  margin-bottom: .5em;
+}
+
 .form {
   box-sizing: border-box;
   color: black;
