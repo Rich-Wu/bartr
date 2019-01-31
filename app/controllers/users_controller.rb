@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def newinfo
     @user = User.update(session[:id], user_params)
-    redirect_to account_path
+    redirect_to root_path
   end
 
   def read

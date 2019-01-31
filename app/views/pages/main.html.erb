@@ -1,10 +1,16 @@
 <% if session[:id] %>
-  <%= link_to "Offer Something of Yours to Trade", "/offer/new" %>
-  <h2 class = "centerText">See What's Being Offered:</h2>
   <div class = "container">
+    <div>
+      <%= link_to "Offer Something", "/offer/new", class: 'button actionButton' %>
+    </div>
+  <h2 class = "centerText">See What's Being Offered:</h2>
   <% Offer.all.reverse.each do |offer| %>
       <div class = "offerCard">
-        <a href = "<%= "#{url_for new_trade_path(offer.id)}" %>">
+        <% if offer.user_id == session[:id] %>
+          <a href = "<%= "#{url_for update_offer_path(offer.id)}" %>">
+        <% else %>
+          <a href = "<%= "#{url_for new_trade_path(offer.id)}" %>">
+        <% end %>
           <h3 class='formHeaderSmall'>
             <%= "#{offer.quantity} #{offer.unit} of #{offer.commodity.name}" %>
           </h3>
@@ -12,21 +18,49 @@
         <div class="offerImage" style = "background-image: url('<%= image_url(url_for(offer.commodity.image)) %>');"></div>
         <div class = "flex columnFlex black">
           <p class = "centerText padding"><%= offer.description %></p>
-          <p class = "rightText padding"><%= "by #{User.find(offer.user_id).username} on #{offer.updated_at.localtime.strftime('%m/%e/%y at %I:%M %P')}" %>
+          <p class = "rightText padding"><%= "by #{User.find(offer.user_id).username} on #{offer.created_at.localtime.strftime('%m/%e/%y at %I:%M %P')}" %>
         </div>
       </div>
       <% if offer.trades %>
-        <% offer.trades.each do |trade| next if trade.user_id != session[:id] %>
+        <% offer.trades.each do |trade| %>
+        <% if trade.user_id == session[:id] %>
         <div class = "tradeCard">
           <h3 class='formHeaderSmall tradeHeader'>
             <%= "You Proposed: #{trade.quantity} #{trade.unit} of #{trade.name}" %>
           </h3>
           <div class = "flex columnFlex black">
             <p class = "centerText padding"><%= trade.description %></p>
-            <p class = "leftText padding"><%= "Latest Status: #{tradeStatus(trade.id)} since #{trade.updated_at.localtime.strftime('%m/%e/%y at %I:%M %P')}" %>
+            <p class = "leftText padding"><%= "Latest Status: #{tradeStatus(trade.id)} since #{trade.updated_at.localtime.strftime('%m/%e/%y at %I:%M %P')}" %></p>
           </div>
           <div class="offerImage" style = "background-image: url('<%= image_url(url_for(trade.image)) %>');"></div>
         </div>
+        <% elsif trade.offer.user_id == session[:id] %>
+          <div class = "tradeCard">
+            <h3 class='formHeaderSmall tradeHeader'>
+              <%= "You were Proposed: #{trade.quantity} #{trade.unit} of #{trade.name}" %>
+            </h3>
+            <div class = "flex columnFlex black" style="padding-bottom: 6px;">
+              <p class = "centerText padding"><%= trade.description %></p>
+              <p class = "leftText padding"><%= "By #{User.find(trade.user_id).username} at #{trade.updated_at.localtime.strftime('%m/%e/%y at %I:%M %P')}" %></p>
+              <% if trade.status == 0 %>
+                <div class = 'flex' style = "justify-content: center;">
+                  <%= link_to "Accept", accept_path(trade.id),{method: 'post', class: 'button'} %>
+                  <%= link_to "Decline", decline_path(trade.id), {method: 'post', class: 'button'} %>
+                  <%# link_to "Counter", counter_path(trade.id), {method: 'post', class: 'button'} %>
+                </div>
+              <% elsif trade.status == 1 %>
+                <p class = "centerText padding"><%= tradeStatus(trade.id) %></p>
+              <% elsif trade.status == 2 %>
+                <div class = "flex" style = "justify-content: center;">
+                  <%= link_to "Complete", complete_path(trade.id), {method: 'post', class: 'button'} %>
+                </div>
+              <% else %>
+                <p class = "centerText padding"><%= tradeStatus(trade.id) %></p>
+              <% end %>
+              </div>
+              <div class="offerImage" style = "background-image: url('<%= image_url(url_for(trade.image)) %>');"></div>
+            </div>
+        <% end %>
         <% end %>
       <% end %>
   <% end %>

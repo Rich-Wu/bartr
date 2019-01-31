@@ -8,6 +8,6 @@
       <%= commodity_form.file_field :image, value: @offer.commodity.image %>
     <% end %>
     <%= f.text_area :description, {value: @offer.description, size: "20x10"} %>
-    <%= f.submit "Edit this Offering" %>
+    <%= f.submit "Edit this Offering", data: {confirm: "Editing this offer will decline any current proposals. Are you sure?"} %>
   <% end %>
 </div>

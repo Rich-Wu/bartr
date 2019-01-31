@@ -13,7 +13,7 @@ class TradesController < ApplicationController
       @trade.offer.status = 1
       @trade.offer.save
     end
-    redirect_to offer_path(@trade.offer_id)
+    redirect_to trades_path
   end
 
   def accept

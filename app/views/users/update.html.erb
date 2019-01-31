@@ -1,13 +1,14 @@
-<h1>Users#update</h1>
-<p>Find me in app/views/users/update.html.erb</p>
-<%= form_for @user, url: account_path do |f| %>
-  Email: <%= f.text_field :email, value: @user.email %></br>
-  Username: <%= f.text_field :username, value: @user.username %></br>
-  Password: <%= f.password_field :password, value: @user.password %></br>
-  Birthday: <%= f.date_field :birthday, value: @user.birthday %></br>
-  Address: <%= f.text_field :address, value: @user.address %></br>
-  Phone: <%= f.text_field :phone, value: @user.phone %></br>
-  <p>
-    <%= f.submit "Update Account Info" %>
-  </p>
-<% end %>
+<div class="container">
+  <div class="formBody">
+    <h2 class="formHeader">Update Your Account Info</h2>
+    <%= form_for @user, url: account_path, html: {class: 'form'} do |f| %>
+      <%= f.text_field :email, value: @user.email %>
+      <%= f.text_field :username, value: @user.username %>
+      <%= f.password_field :password, value: @user.password %>
+      <%= f.date_field :birthday, value: @user.birthday %>
+      <%= f.text_field :address, value: @user.address %>
+      <%= f.text_field :phone, value: @user.phone %>
+      <%= f.submit "Update Info" %>
+    <% end %>
+  </div>
+</div>

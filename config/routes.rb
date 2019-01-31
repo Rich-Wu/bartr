@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     delete '/offer/:id', to: 'offers#destroy', as: 'destroy_offer'
     patch '/offer/:id', to: 'offers#update', as: 'update_offer'
   end
+  get '/react', to: 'pages#react'
   get '/main', to: 'pages#main'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
