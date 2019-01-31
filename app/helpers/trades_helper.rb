@@ -3,7 +3,7 @@ module TradesHelper
   def tradeStatus(tradeId)
     status = Trade.find(tradeId).status
     if status == 0
-      return "Not Accepted"
+      return "Pending Decision"
     elsif status == 1
       return "Trade Declined"
     elsif status == 2
