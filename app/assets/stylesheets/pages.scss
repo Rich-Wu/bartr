@@ -37,26 +37,3 @@ nav a:last-child {
   display: grid;
   grid-template: 2fr 1fr 2fr / 100%;
 }
-
-.tradeCard {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.flex {
-  display: flex;
-}
-
-.flexCenter {
-  justify-content: center;
-}
-
-.textCard {
-  display: flex;
-  flex-direction: column;
-}
-
-.bigger {
-  font-size: 1.2em;
-}

@@ -1,13 +1,15 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
-<%= form_for @user, url: signup_path do |f| %>
-  Email: <%= f.text_field :email %></br>
-  Username: <%= f.text_field :username %></br>
-  Password: <%= f.password_field :password %></br>
-  Birthday: <%= f.date_field :birthday %></br>
-  Address: <%= f.text_field :address %></br>
-  Phone: <%= f.text_field :phone %></br>
-  <p>
-    <%= f.submit "Create Account" %>
-  </p>
-<% end %>
+<div class="container">
+  <div class="signupForm">
+    <h2 class="formHeader">Sign Up for Bartr</h2>
+    <%= form_for @user, url: signup_path, html: {class: 'form'} do |f| %>
+      <%= f.text_field :email, placeholder: "Email" %>
+      <%= f.text_field :username, placeholder: "Username" %>
+      <%= f.password_field :password, placeholder: "Password" %>
+      <%= f.label :birthday, "Birthday" %>
+      <%= f.date_field :birthday %>
+      <%= f.text_field :address, placeholder: "Address" %>
+      <%= f.text_field :phone, placeholder: "Phone Number" %>
+      <%= f.submit "Create Account" %>
+    <% end %>
+  </div>
+</div>
