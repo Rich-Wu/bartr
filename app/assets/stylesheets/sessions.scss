@@ -24,6 +24,18 @@
   letter-spacing: 2px;
   margin-bottom: 0;
 }
+.formFooterSmall {
+  background-color: #5184d6;
+  text-align: center;
+  font-size: 1.5em;
+  padding: .5em 1em;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  font-family: 'Raleway';
+  letter-spacing: 2px;
+  margin-bottom: 0;
+  grid-column: 1/span 4;
+}
 .tradeHeader {
   background-color: #f13c3c;
 }
@@ -85,4 +97,9 @@
   min-height: 200px;
   background-repeat: no-repeat;
   background-size: auto 200px;
+}
+
+.marginZero {
+  margin-top: 0;
+  margin-bottom: 0;
 }

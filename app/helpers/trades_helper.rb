@@ -13,4 +13,17 @@ module TradesHelper
     end
   end
 
+  def tradeVerbs(tradeId)
+    status = Trade.find(tradeId).status
+    if status == 0
+      return "unseen"
+    elsif status == 1
+      return "rejected"
+    elsif status == 2
+      return "accepted"
+    elsif status == 3
+      return "completed"
+    end
+  end
+
 end

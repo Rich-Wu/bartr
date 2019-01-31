@@ -1,16 +1,33 @@
-<h1>Trades#index</h1>
-<p>Find me in app/views/trades/index.html.erb</p>
-<% @trades.each do |trade| %>
-<div>
-  <h4>You offered:</h4>
-    <%= trade.quantity %>
-    <%= trade.unit %>
-    <%= trade.name %>
-  <p>for:</p>
-    <%= "#{User.find(trade.offer.user_id).username}'s " %>
-    <%= trade.offer.quantity %>
-    <%= trade.offer.unit %>
-    <%= trade.offer.commodity.name %>
-    <p>Status: <%= tradeStatus(trade.id) %></p>
+<div class = "container">
+  <h2 class = "centerText">
+    Your Proposed Trades
+  </h2>
+  <% @trades.each do |trade| %>
+  <div class = "proposalCard autoMargin" style = "margin-top: 1em!important;">
+    <h3 class = "propTop formHeaderSmall marginZero">
+      <%= "You Offered: #{trade.quantity} #{trade.unit} of #{trade.name}" %>
+    </h3>
+    <div class="offerImage" style = "background-image: url('<%= image_url(url_for(trade.image)) %>');"></div>
+    <div class = "flex columnFlex black" style = "border-right: 1px solid #5184d6;">
+      <p class = "centerText padding">
+        <%= trade.description %>
+      </p>
+      <p class = "leftText padding">
+        <%= "by You on #{trade.created_at.localtime.strftime('%m/%e/%y at %I:%M %P')}" %>
+      </p>
+    </div>
+    <div class = "flex columnFlex black">
+      <p class = "centerText padding">
+        <%= trade.offer.description %>
+      </p>
+      <p class = "rightText padding">
+        <%= "#{tradeVerbs(trade.id)} by #{User.find(trade.offer.user_id).username} on #{trade.updated_at.localtime.strftime('%m/%e/%y at %I:%M %P')}" %>
+      </p>
+    </div>
+    <div class="offerImage" style = "background-image: url('<%= image_url(url_for(trade.offer.commodity.image)) %>');"></div>
+    <h3 class = "formFooterSmall marginZero">
+      <%= "For: #{trade.offer.quantity} #{trade.offer.unit} of #{trade.offer.commodity.name}" %>
+    </h3>
+  </div>
   <% end %>
 </div>
