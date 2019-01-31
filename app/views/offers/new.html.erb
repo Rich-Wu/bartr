@@ -1,12 +1,17 @@
-<h1>Offers#new</h1>
-<p>Find me in app/views/offers/new.html.erb</p>
-<%= form_for @offer, url: "/offer/new", html: {multipart: true} do |offer_form| %>
-  <%= offer_form.hidden_field :user_id, value: session[:id] %>
-  Quantity: <%= offer_form.number_field :quantity %>
-  Units: <%= offer_form.text_field :unit, placeholder: "(e.g. boxes, units) Leave Blank if item is already a unit" %>
-  <%= fields_for @offer.commodity do |commodity_form| %>
-  Item: <%= commodity_form.text_field :name %>
-  Image: <%= commodity_form.file_field :image%>
-  <% end %>
-  <%= offer_form.submit "Create the Listing" %>
-<% end %>
+<div class="container">
+  <div class="formBody">
+    <h2 class="formHeader">Offer Up something of Yours</h2>
+    <%= form_for @offer, url: "/offer/new", html: {multipart: true, class: 'form'} do |offer_form| %>
+      <%= offer_form.hidden_field :user_id, value: session[:id] %>
+      <%= offer_form.number_field :quantity, placeholder: "Quantity" %>
+      <%= offer_form.text_field :unit, placeholder: "Units (Leave Blank if Item is a Unit)" %>
+      <%= fields_for @offer.commodity do |commodity_form| %>
+        <%= commodity_form.text_field :name, placeholder: "Item Name" %>
+        <%= commodity_form.label :image, "Upload an image of your Item:" %>
+        <%= commodity_form.file_field :image%>
+      <% end %>
+      <%= offer_form.text_area :description, {placeholder: "Describe your item here", size: "20x10"} %>
+      <%= offer_form.submit "Create the Listing" %>
+    <% end %>
+  </div>
+</div>

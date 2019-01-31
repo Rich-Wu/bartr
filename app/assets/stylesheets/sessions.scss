@@ -42,10 +42,23 @@
     border-radius: 4px;
     transition: all .5s;
   }
+  ::-webkit-file-upload-button {
+    background-color: #5184d6;
+    color: white;
+    border-radius: 3px;
+    font-size: .8em;
+  }
   input[type=submit]:hover {
     background-color: #415c73;
   }
   input[type=submit]:active {
     background-color: green;
+  }
+  textarea {
+    padding: 2px 2px;
+  }
+  label {
+    padding: 10px 5px;
+    padding-bottom: 1px;
   }
 }
