@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
   def delete
     session[:id] = nil
-    redirect_to main_path
+    redirect_to root_path
   end
 
 end
