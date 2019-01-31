@@ -49,6 +49,7 @@ gem 'responders'
 group :production do
   gem 'aws-sdk-s3'
   gem 'pg'
+  gem "sentry-raven"
 end
 
 group :development, :test do
